@@ -1,29 +1,36 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+
+    <keep-alive exclude="Detail">
+        <router-view></router-view>
+    </keep-alive>
+    <TabBar v-if="$route.meta.tabBar"/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import {MessageBox} from "lib/messageBox/index.js"
+
+import TabBar from "components/tabBar"
+export default {
+    name:"App",
+    components:{
+      TabBar
+    },
+    created(){
+      MessageBox({
+        title:"城市定位",
+        message:"深圳",
+        handleOK:()=>{
+          alert("Ok")
+        },
+        handleCancel:()=>{
+           alert("取消")
+        }
+      });
     }
-  }
 }
+</script>
+<style lang="scss">
+
 </style>

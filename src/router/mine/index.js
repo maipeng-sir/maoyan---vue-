@@ -1,0 +1,30 @@
+export default {
+    path:"/mine",
+    component:()=>import("views/mine"),
+    name:"mine",
+    redirect:"/mine/meituan",
+    meta:{
+        tabBar:false,
+        auth:true 
+    },
+    children:[
+        {
+            path:"meituan",
+            component:()=>import("components/meituan"),
+            name:"meituan",
+            meta:{
+                tabBar:false,
+                auth:true
+            }
+        },
+        {
+            path:"phone",
+            component:()=>import("components/phone"),
+            name:"phone",
+            meta:{
+                tabBar:false,
+                auth:true
+            }
+        }
+    ]
+}
